@@ -25,8 +25,8 @@ export class PixabayAPI {
       const response = await axios.get(`${BASE_URL}?${options}`);
       this.incrementPage();
       return response.data;
-    } catch (error) {
-      console.error(error.toJSON());
+    } catch (err) {
+      throw new Error(err.message);
     }
   }
 
