@@ -96,7 +96,6 @@ function renderPost(data) {
 
   galleryEl.insertAdjacentHTML('beforeend', markupPost);
   lightbox.refresh();
-  
 }
 
 function clearGallery() {
