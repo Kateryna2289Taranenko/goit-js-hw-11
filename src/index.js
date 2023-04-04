@@ -62,6 +62,10 @@ function fetchPosts() {
       Notify.success(`Hooray! We found ${pixabayApi.hits} images.`);
       loadMoreBtn.show();
     }
+    if (data.hits >= pixabayApi.hits) {
+      Notify.info("We're sorry, but you've reached the end of search results.");
+      loadMoreBtn.hide();
+    }
   });
 }
 
