@@ -36,6 +36,7 @@ function onSearch(e) {
 function onLoadMore() {
   fetchPosts();
   loadMoreBtn.show();
+  smoothScroll();
 }
 
 function fetchPosts() {
@@ -55,16 +56,13 @@ function fetchPosts() {
 
     if (!data.hits.length) {
       loadMoreBtn.hide();
+      Notify.info("We're sorry, but you've reached the end of search results.");
       return;
     }
     renderPost(data.hits);
     if (curentPage === 1) {
       Notify.success(`Hooray! We found ${pixabayApi.hits} images.`);
       loadMoreBtn.show();
-    }
-    if (data.hits >= pixabayApi.hits) {
-      Notify.info("We're sorry, but you've reached the end of search results.");
-      loadMoreBtn.hide();
     }
   });
 }
@@ -98,7 +96,7 @@ function renderPost(data) {
 
   galleryEl.insertAdjacentHTML('beforeend', markupPost);
   lightbox.refresh();
-  smoothScroll();
+  
 }
 
 function clearGallery() {
